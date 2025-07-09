@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: 17
@@ -23,7 +23,8 @@ jobs:
         run: chmod +x ./AndroidTemplate_HelloGradle/gradlew
 
       - name: Build APK
-        run: cd AndroidTemplate_HelloGradle && ./gradlew assembleDebug
+        working-directory: ./AndroidTemplate_HelloGradle
+        run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
