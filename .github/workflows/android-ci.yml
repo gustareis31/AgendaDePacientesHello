@@ -20,13 +20,14 @@ jobs:
           java-version: 17
 
       - name: Make gradlew executable
-        run: chmod +x ./gradlew
+        run: chmod +x ./AndroidTemplate_HelloGradle/gradlew
 
       - name: Build APK
+        working-directory: AndroidTemplate_HelloGradle
         run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug.apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: AndroidTemplate_HelloGradle/app/build/outputs/apk/debug/app-debug.apk
